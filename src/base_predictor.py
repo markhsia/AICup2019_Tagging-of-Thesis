@@ -26,6 +26,7 @@ class BasePredictor():
         if device is not None:
             self.device = torch.device(device)
         else:
+            #self.device = torch.device('cuda:3' if torch.cuda.is_available()
             self.device = torch.device('cuda:3' if torch.cuda.is_available()
                                        else 'cpu')
 
