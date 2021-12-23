@@ -4,6 +4,8 @@ import numpy as np
 from transformers import BertTokenizer, BertModel, RobertaTokenizer, RobertaModel, XLNetModel, GPT2Model 
 import scipy.stats
 import random
+import numpy
+
 
 class RobertaForMultiLabelSequenceClassification(torch.nn.Module):
     """XLNET model for classification.
@@ -137,7 +139,6 @@ class BertNet(torch.nn.Module):
                                        else 'cpu')
         print(self.device)
 
-    import numpy
     
     def forward(self, context, context_lens, sentence_token):
         batch_size = context.size()[0]
