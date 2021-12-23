@@ -41,11 +41,11 @@ class DialogDataset(Dataset):
         # collate lists
         #batch['id'] = [data['id'] for data in datas]
         batch['abstract_lens'] = [len(data['abstract']) for data in datas]
-        #padded_len = min(self.context_padded_len, max(batch['abstract_lens']))
-        padded_len = max(self.context_padded_len, max(batch['abstract_lens']))
+        padded_len = min(self.context_padded_len, max(batch['abstract_lens']))
 
         batch['abstract'] = torch.tensor(
-            [pad_to_len(data['abstract'], padded_len, self.tokenizer, self.padding)
+            #[pad_to_len(data['abstract'], padded_len, self.tokenizer, self.padding)
+            [data['abstract']
              for data in datas]
         )
         batch['label'] = [data['label'] for data in datas]
