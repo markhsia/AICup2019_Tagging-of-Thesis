@@ -44,8 +44,7 @@ class DialogDataset(Dataset):
         padded_len = min(self.context_padded_len, max(batch['abstract_lens']))
 
         batch['abstract'] = torch.tensor(
-            #[pad_to_len(data['abstract'], padded_len, self.tokenizer, self.padding)
-            [data['abstract']
+            [pad_to_len(data['abstract'], padded_len, self.tokenizer, self.padding)
              for data in datas]
         )
         batch['label'] = [data['label'] for data in datas]
@@ -74,8 +73,8 @@ def pad_to_len(arr, padded_len, tokenizer, padding="<pad>"):
             if padding == 5:
                 new_arr.append(padding)
             else:
-                new_arr.extend(tokenizer.encode(tokenizer.pad_token))
-                #new_arr.append(551)
+                #new_arr.extend(tokenizer.encode(tokenizer.pad_token))
+                new_arr.append(551)
     else:
         for i in range(length_arr - padded_len):
             del new_arr[-1]
