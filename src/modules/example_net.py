@@ -148,7 +148,7 @@ class BertNet(torch.nn.Module):
         padding_mask = []
         for i in range(batch_size):
             tmp = [1] * context_lens[i] + [0] * (max_context_len - context_lens[i])
-            padding_mask.append(tmp)
+        padding_mask.append(tmp)
         print(padding_mask)
         padding_mask = torch.Tensor(padding_mask).to(self.device)
 
