@@ -137,7 +137,8 @@ class BertNet(torch.nn.Module):
                                        else 'cpu')
         print(self.device)
 
-
+    import numpy
+    
     def forward(self, context, context_lens, sentence_token):
         batch_size = context.size()[0]
         max_context_len = context.size()[1]
