@@ -129,7 +129,8 @@ class BertNet(torch.nn.Module):
             self.model.bert.encoder.layer[idx].output.dropout.p = 0.0
         '''
 
-        self.device = torch.device('cuda:3' if torch.cuda.is_available()
+        #self.device = torch.device('cuda:3' if torch.cuda.is_available()
+        self.device = torch.device('cuda:0' if torch.cuda.is_available()
                                        else 'cpu')
 
 
