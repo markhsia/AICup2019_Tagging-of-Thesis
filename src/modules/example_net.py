@@ -146,10 +146,9 @@ class BertNet(torch.nn.Module):
         for i in range(batch_size):
             tmp = [1] * context_lens[i] + [0] * (max_context_len - context_lens[i])
             padding_mask.append(tmp)
-
+        print(padding_mask)
         padding_mask = torch.Tensor(padding_mask).to(self.device)
         
-        #answer_prob = self.model(context, context_lens, sentence_token, attention_mask=padding_mask)
-        answer_prob = self.model(context, context_lens, sentence_token)
+        answer_prob = self.model(context, context_lens, sentence_token, attention_mask=padding_mask)
         #answer_prob = self.sigmoid(answer_prob)
         return answer_prob
