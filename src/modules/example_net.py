@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import numpy as np
-from transformers import BertTokenizer, BertModel, RobertaTokenizer, RobertaModel, XLNetModel, GPT2Model 
+from pytorch-transformers import BertTokenizer, BertModel, RobertaTokenizer, RobertaModel, XLNetModel, GPT2Model 
 import scipy.stats
 import random
 
