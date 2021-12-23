@@ -1,7 +1,6 @@
 import torch
 from base_predictor import BasePredictor
-#from modules import BertNet, CategoryNet, Seq2SeqBertNet
-from modules import BertNet,  Seq2SeqBertNet
+from modules import BertNet, CategoryNet, Seq2SeqBertNet
 from transformers import BertTokenizer, BertModel, RobertaModel, RobertaTokenizer, AdamW
 
 class ExamplePredictor(BasePredictor):
