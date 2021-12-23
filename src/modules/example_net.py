@@ -109,7 +109,8 @@ class BertNet(torch.nn.Module):
         self.sigmoid = torch.nn.Sigmoid()
         self.softmax = torch.nn.Softmax()
         #self.model = BertForMultiLabelSequenceClassification.from_pretrained('bert-base-uncased', output_hidden_states=True)
-        self.model = RobertaForMultiLabelSequenceClassification()
+        self.model = BertForMultiLabelSequenceClassification.from_pretrained('bert-base-uncased', output_hidden_states=True)
+        #self.model = RobertaForMultiLabelSequenceClassification()
         SEED = 0
         torch.manual_seed(SEED)
         torch.cuda.manual_seed(SEED)
