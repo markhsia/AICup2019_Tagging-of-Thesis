@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import numpy as np
-from pytorch-transformers import BertTokenizer, BertModel, RobertaTokenizer, RobertaModel, XLNetModel, GPT2Model 
+from transformers import BertTokenizer, BertModel, RobertaTokenizer, RobertaModel, XLNetModel, GPT2Model 
 import scipy.stats
 import random
 
@@ -148,8 +148,7 @@ class BertNet(torch.nn.Module):
             tmp = [1] * context_lens[i] + [0] * (max_context_len - context_lens[i])
             padding_mask.append(tmp)
         print(padding_mask)
-        #padding_mask = torch.Tensor(padding_mask).to(self.device)
-        padding_mask = torch.stack(padding_mask).to(device)
+        padding_mask = torch.Tensor(padding_mask).to(self.device)
         
         answer_prob = self.model(context, context_lens, sentence_token, attention_mask=padding_mask)
 
