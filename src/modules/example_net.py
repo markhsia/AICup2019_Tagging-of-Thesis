@@ -138,7 +138,7 @@ class BertNet(torch.nn.Module):
         print(self.device)
 
 
-    def forward(self, context, context_lens, sentence_token,token_type_ids=None, attention_mask=None, labels=None):
+    def forward(self, context, context_lens, sentence_token):
         batch_size = context.size()[0]
         #max_context_len = context.size()[1]
         max_context_len = 500
@@ -148,8 +148,8 @@ class BertNet(torch.nn.Module):
             tmp = [1] * context_lens[i] + [0] * (max_context_len - context_lens[i])
             padding_mask.append(tmp)
         print(padding_mask)
-        #padding_mask = torch.Tensor(padding_mask).to(self.device)
+        padding_mask = torch.Tensor(padding_mask).to(self.device)
         
-        answer_prob = self.model(context, context_lens, sentence_token)
+        answer_prob = self.model(context, context_lens, sentence_token, attention_mask=padding_mask)
         #answer_prob = self.sigmoid(answer_prob)
         return answer_prob
