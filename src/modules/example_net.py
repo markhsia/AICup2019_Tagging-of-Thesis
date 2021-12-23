@@ -112,7 +112,7 @@ class BertNet(torch.nn.Module):
         self.softmax = torch.nn.Softmax()
         #self.model = BertForMultiLabelSequenceClassification.from_pretrained('bert-base-uncased', output_hidden_states=True)
 
-        self.model = BertModel.from_pretrained('allenai/scibert_scivocab_uncased')
+        self.model = BertModel.from_pretrained('allenai/scibert_scivocab_uncased', use_fast=False)
 
         #self.model = RobertaForMultiLabelSequenceClassification()
         SEED = 0
@@ -150,8 +150,8 @@ class BertNet(torch.nn.Module):
             tmp = [1] * context_lens[i] + [0] * (max_context_len - context_lens[i])
             padding_mask.append(tmp)
         print(padding_mask)
-        #padding_mask = torch.Tensor(padding_mask).to(self.device)
-        padding_mask=torch.from_numpy(numpy.array(padding_mask))
+        padding_mask = torch.Tensor(padding_mask).to(self.device)
+
         
         answer_prob = self.model(context, context_lens, sentence_token, attention_mask=padding_mask)
 
