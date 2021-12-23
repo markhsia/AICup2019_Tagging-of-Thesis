@@ -20,9 +20,9 @@ class DialogDataset(Dataset):
         self.context_padded_len = context_padded_len
         #self.padding = padding
         self.shuffle = shuffle
-        self.tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
+        #self.tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
         #self.tokenizer = RobertaTokenizer.from_pretrained('roberta-large')
-        #self.tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+        self.tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
         #self.tokenizer = XLNetTokenizer.from_pretrained('xlnet-large-cased')
         #self.tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
         self.padding = self.tokenizer.pad_token
