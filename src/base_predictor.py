@@ -27,7 +27,7 @@ class BasePredictor():
             self.device = torch.device(device)
         else:
             #self.device = torch.device('cuda:3' if torch.cuda.is_available()
-            self.device = torch.device('cuda:3' if torch.cuda.is_available()
+            self.device = torch.device('cuda:0' if torch.cuda.is_available()
                                        else 'cpu')
 
         self.epoch = 0
