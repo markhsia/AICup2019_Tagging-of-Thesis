@@ -19,7 +19,7 @@ class ExamplePredictor(BasePredictor):
         
         self.model = BertNet()
         #self.model = Seq2SeqBertNet()
-        self.model = self.model.to(self.device)
+        #self.model = self.model.to(self.device)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.loss = torch.nn.BCELoss()
         #self.category_description = torch.load('../data/category_description.pkl')
