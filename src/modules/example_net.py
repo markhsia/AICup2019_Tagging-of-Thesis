@@ -109,7 +109,7 @@ class BertNet(torch.nn.Module):
         self.sigmoid = torch.nn.Sigmoid()
         self.softmax = torch.nn.Softmax()
         #self.model = BertForMultiLabelSequenceClassification.from_pretrained('bert-base-uncased', output_hidden_states=True)
-        #self.model = BertForMultiLabelSequenceClassification.from_pretrained('bert-base-uncased', output_hidden_states=True)
+
         self.model = BertModel.from_pretrained('allenai/scibert_scivocab_uncased')
 
         #self.model = RobertaForMultiLabelSequenceClassification()
@@ -140,13 +140,13 @@ class BertNet(torch.nn.Module):
 
     def forward(self, context, context_lens, sentence_token):
         batch_size = context.size()[0]
-        #max_context_len = context.size()[1]
-        max_context_len = 500
+        max_context_len = context.size()[1]
+       
 
         padding_mask = []
         for i in range(batch_size):
             tmp = [1] * context_lens[i] + [0] * (max_context_len - context_lens[i])
-            #padding_mask.append(tmp)
+            padding_mask.append(tmp)
         print(padding_mask)
         padding_mask = torch.Tensor(padding_mask).to(self.device)
         
