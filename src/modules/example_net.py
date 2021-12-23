@@ -132,6 +132,7 @@ class BertNet(torch.nn.Module):
         #self.device = torch.device('cuda:3' if torch.cuda.is_available()
         self.device = torch.device('cuda:0' if torch.cuda.is_available()
                                        else 'cpu')
+        print(self.device)
 
 
     def forward(self, context, context_lens, sentence_token):
