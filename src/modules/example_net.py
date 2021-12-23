@@ -140,7 +140,8 @@ class BertNet(torch.nn.Module):
 
     def forward(self, context, context_lens, sentence_token):
         batch_size = context.size()[0]
-        max_context_len = context.size()[1]
+        #max_context_len = context.size()[1]
+        max_context_len = 500
 
         padding_mask = []
         for i in range(batch_size):
